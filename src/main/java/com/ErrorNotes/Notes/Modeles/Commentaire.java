@@ -13,7 +13,7 @@ public class Commentaire {
     Long id;
     String description;
     @ManyToOne
-    private Utilistaeur utilistaeur;
+    private Utilisateur utilistaeur;
     @ManyToOne
     private  Commentaire commentaire;
 }

@@ -15,7 +15,7 @@ public class Probleme {
     String  description;
     String temps;
     @ManyToOne
-    private Utilistaeur utilistaeur;
+    private Utilisateur utilistaeur;
     @ManyToOne
     private Etat etat;
 }
