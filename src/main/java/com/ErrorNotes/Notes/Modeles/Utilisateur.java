@@ -14,8 +14,7 @@ public class Utilisateur {
     String nom;
     String prenom;
     String contact;
-    String pass1;
-    String pass2;
+    String motdepasse;
     @ManyToOne
     private  Role role;
 
