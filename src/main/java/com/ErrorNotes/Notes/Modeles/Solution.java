@@ -16,7 +16,6 @@ public class Solution {
     String site;
     String methode;
     String description;
-
     @ManyToOne
     private Probleme probleme;
 }

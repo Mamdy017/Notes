@@ -15,5 +15,5 @@ public class Commentaire {
     @ManyToOne
     private Utilisateur utilistaeur;
     @ManyToOne
-    private  Commentaire commentaire;
+    private  Solution solution;
 }
