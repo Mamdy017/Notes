@@ -4,10 +4,17 @@ import com.ErrorNotes.Notes.Modeles.Probleme;
 import com.ErrorNotes.Notes.Modeles.Utilisateur;
 
 public class UtilisateurServiceImpl implements UtilisateurService {
-    @Override
+
+    /*@Override
     public void commenter(long id_solution) {
 
+
     }
+
+    @Override
+    public Commentaire commenter(Long id_solution) {
+        return null;
+    }**/
 
     @Override
     public Probleme poserProbleme() {
@@ -15,7 +22,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     @Override
-    public Utilisateur changerMotdepasse(String mdp) {
+    public String changerMotdepasse(Long mdp) {
         return null;
     }
 
@@ -28,4 +35,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public String donnerRole(String role) {
         return null;
     }
+
+    @Override
+    public Utilisateur creer(Utilisateur utilisateur) {
+        return utilisateur;
+    }
+
 }
