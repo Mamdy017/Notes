@@ -13,7 +13,15 @@ public class ProblemeController {
     @Autowired
     ProblemeServiceImpl problemeServiceimpl;
     @PostMapping("/poserprobleme")
-    public Probleme create(@RequestBody Probleme probleme) {
+    public Object create(@RequestBody Probleme probleme) {
         return problemeServiceimpl.poserProbleme(probleme);
+    }
+    @PostMapping("/changeretat/{idprobleme}/{idetat}")
+    public String changerEtat(@PathVariable("idprobleme") long id_probleme,@PathVariable("idetat") long id_etat) {
+        return problemeServiceimpl.changerEtatProbleme(id_probleme,id_etat);
+    }
+    @GetMapping("/rechercher/{motcle}")
+    public Object rechercherMotCle(@PathVariable("motcle") String motcle) {
+        return problemeServiceimpl.rechercherParMotCle(motcle);
     }
 }
