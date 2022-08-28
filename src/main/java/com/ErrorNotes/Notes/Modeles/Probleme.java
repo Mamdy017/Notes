@@ -1,5 +1,6 @@
 package com.ErrorNotes.Notes.Modeles;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,5 +18,6 @@ public class Probleme {
     @ManyToOne
     private Utilisateur utilistaeur;
     @ManyToOne
+    @JsonIgnore
     private Etat etat;
 }

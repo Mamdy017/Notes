@@ -10,6 +10,6 @@ public interface ProblemeService {
     public String changerEtatProbleme(long id_probleme,long id_etat);
     public void ajouterSolution(long id_solution);
     public Object afficherUtilistateur(long id_probleme);
-    public List<Probleme> rechercherParMotCle(String motcle);
+    public Object rechercherParMotCle(String motcle);
 
 }

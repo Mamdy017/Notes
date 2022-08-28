@@ -18,10 +18,7 @@ public class ProblemeServiceImpl implements ProblemeService {
     EtatRepository etatRepository;
     @Override
     public Object poserProbleme(Probleme probleme) {
-        Etat etatExistant = etatRepository.findById(probleme.getEtat().getId()).orElse(null);
-        if (etatExistant==null) {
-            return "L'état n'est pas valide !";
-        } else
+        probleme.setEtat(new Etat(1L));
         return problemeRepository.save(probleme);
 
     }
@@ -29,14 +26,14 @@ public class ProblemeServiceImpl implements ProblemeService {
     @Override
     public String changerEtatProbleme(long id_probleme,long id_etat) {
         Probleme problemeAncienEtat = problemeRepository.findById(id_probleme).orElse(null);
+        Etat nouveletat = etatRepository.findById(id_etat).orElse(null);
 
         if (problemeAncienEtat==null) return "Ce problème n'existe pas !";
+        if (nouveletat == null) return "Etat invalide !";
         else {
-            Etat nouveletat = problemeAncienEtat.getEtat();
-            nouveletat.setId(id_etat);
-            problemeAncienEtat.setEtat(nouveletat);
+            problemeAncienEtat.setEtat(new Etat(id_etat));
             problemeRepository.save(problemeAncienEtat);
-            return "Etat du problème changer en : "+problemeAncienEtat.getEtat().getEtat();
+            return "Etat du problème changer en : " +nouveletat.getEtat();
         }
     }
 
@@ -55,7 +52,10 @@ public class ProblemeServiceImpl implements ProblemeService {
     }
 
     @Override
-    public List<Probleme> rechercherParMotCle(String motcle) {
-        return problemeRepository.rechercherDescription(motcle);
+    public Object rechercherParMotCle(String motcle) {
+        List<Probleme> resultat;
+        resultat = problemeRepository.rechercherDescription(motcle);
+        if (resultat.size() == 0) return "Problème introuvable!";
+        else return resultat;
     }
 }
