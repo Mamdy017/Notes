@@ -1,6 +1,7 @@
 package com.ErrorNotes.Notes;
 
 import com.ErrorNotes.Notes.Repositories.EtatRepository;
+import com.ErrorNotes.Notes.Repositories.RoleRepository;
 import com.ErrorNotes.Notes.Services.EtatService;
 import com.ErrorNotes.Notes.Services.EtatServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class NotesApplication implements CommandLineRunner {
 
 	@Autowired
 	EtatRepository etatRepository;
+	@Autowired
+	RoleRepository roleRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(NotesApplication.class, args);
 
@@ -26,6 +29,8 @@ public class NotesApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		if (etatRepository.findAll().size() == 0)
 		etatRepository.insererEtat();
-		else return;
+
+		if (roleRepository.findAll().size()==0) roleRepository.insererRole();
+
 	}
 }
