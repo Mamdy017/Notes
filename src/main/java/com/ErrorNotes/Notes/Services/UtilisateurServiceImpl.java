@@ -2,8 +2,13 @@ package com.ErrorNotes.Notes.Services;
 
 import com.ErrorNotes.Notes.Modeles.Probleme;
 import com.ErrorNotes.Notes.Modeles.Utilisateur;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 public class UtilisateurServiceImpl implements UtilisateurService {
+
+    @Autowired
+    public UtilisateurService utilisateurService;
 
     /*@Override
     public void commenter(long id_solution) {
@@ -32,7 +37,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     @Override
-    public String donnerRole(String role) {
+    public Utilisateur donnerRole(String role) {
         return null;
     }
 

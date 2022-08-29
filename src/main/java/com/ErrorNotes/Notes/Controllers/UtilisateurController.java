@@ -1,6 +1,7 @@
 package com.ErrorNotes.Notes.Controllers;
 
 
+import com.ErrorNotes.Notes.Modeles.Role;
 import com.ErrorNotes.Notes.Modeles.Utilisateur;
 import com.ErrorNotes.Notes.Services.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,9 @@ public class UtilisateurController {
         return utilisateurService.changerNom(utilisateur.getNom());
     }
 
-    @GetMapping("/role/{id}")
+   @GetMapping("/role/{id}")
     public Utilisateur donner  (@PathVariable Long id, @RequestBody Utilisateur utilisateur){
-        return utilisateurService.donnerRole(id);
+        return utilisateurService.donnerRole(String.valueOf(id));
     }
 
 
