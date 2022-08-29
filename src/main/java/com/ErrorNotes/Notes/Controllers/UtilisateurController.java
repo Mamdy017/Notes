@@ -12,23 +12,28 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UtilisateurController {
 
-    //Appel de la classe repositories pour la persistance des données.
 
-    public UtilisateurService utilisateurService ;
+    //Appel de la classe service.
 
-    @PostMapping("Creer")
+    @Autowired
+    UtilisateurService utilisateurService ;
+
+    @PostMapping("creer")
     public Utilisateur create (@RequestBody Utilisateur utilisateur){
 
         return utilisateurService.creer(utilisateur);
     }
-
-    @PutMapping("/modifier_mdp/{id}")
-    public String update (@PathVariable Long id, @PathVariable String mdp){
+@PutMapping("/update/{id}")
+    public  String update(@RequestBody Utilisateur utilisateur,@PathVariable Long id){
+        return utilisateurService.Modifier(utilisateur,id);
+    }
+    @PutMapping("/modifier_mdp/{id}/{mdp}")
+    public String update (@PathVariable Long id, @RequestBody String mdp){
         return utilisateurService.changerMotdepasse(id, mdp);
     }
 
-    @PutMapping("/modifier_nom/{id_user}")
-    public String modifier (@PathVariable Long id, @PathVariable String nom){
+    @PutMapping("/modifier_nom/{id}/{nom}")
+    public String modifier (@PathVariable Long id, @RequestBody String nom){
         return utilisateurService.changerNom(id, nom);
     }
 

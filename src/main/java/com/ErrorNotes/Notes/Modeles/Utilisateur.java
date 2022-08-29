@@ -14,7 +14,6 @@ public class Utilisateur {
     String nom;
     String prenom;
     String contact;
-    @Column(unique = true)
     String motdepasse;
     @ManyToOne
     private  Role role;

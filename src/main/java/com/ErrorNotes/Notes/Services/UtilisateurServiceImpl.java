@@ -5,8 +5,9 @@ import com.ErrorNotes.Notes.Modeles.Role;
 import com.ErrorNotes.Notes.Modeles.Utilisateur;
 import com.ErrorNotes.Notes.Repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class UtilisateurServiceImpl implements UtilisateurService {
 
     @Autowired
@@ -72,5 +73,23 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         }
 
     }
+
+    @Override
+    public String Modifier(Utilisateur utilisateur, Long id) {
+        Utilisateur utilisateur1=utilisateurRepository.findById(id).orElse(null);
+        if (utilisateur1 == null) return "Cet utilisateur n'existe pas !";
+        else {
+            utilisateur1.setNom(utilisateur.getNom());
+            utilisateur1.setPrenom(utilisateur.getPrenom());
+            utilisateur1.setContact(utilisateur.getContact());
+            utilisateur1.setMotdepasse(utilisateur.getMotdepasse());
+            utilisateur1.setRole(utilisateur.getRole());
+            this.utilisateurRepository.save(utilisateur1);
+            return "Modification reussi";
+        }
+
+    }
+
+
 
 }
