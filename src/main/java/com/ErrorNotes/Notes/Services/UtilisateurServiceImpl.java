@@ -58,7 +58,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     @Override
     public Utilisateur creer(Utilisateur utilisateur) {
-
+        utilisateur.setRole(new Role(2));
         return utilisateurRepository.save(utilisateur);
     }
 
