@@ -16,7 +16,7 @@ public class ProblemeController {
     public Object create(@RequestBody Probleme probleme) {
         return problemeServiceimpl.poserProbleme(probleme);
     }
-    @PostMapping("/changeretat/{idprobleme}/{idetat}")
+    @PutMapping("/changeretat/{idprobleme}/{idetat}")
     public String changerEtat(@PathVariable("idprobleme") long id_probleme,@PathVariable("idetat") long id_etat) {
         return problemeServiceimpl.changerEtatProbleme(id_probleme,id_etat);
     }

@@ -12,11 +12,12 @@ public class Probleme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(unique = true)
     String titre;
     String  description;
     String temps;
     @ManyToOne
-    private Utilisateur utilistaeur;
+    private Utilisateur utilisateur;
     @ManyToOne
     @JsonIgnore
     private Etat etat;

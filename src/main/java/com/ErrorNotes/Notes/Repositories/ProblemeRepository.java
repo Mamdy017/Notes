@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ProblemeRepository extends JpaRepository<Probleme,Long> {
-    @Query(value = "SELECT * from probleme where description like %?%",nativeQuery = true)
+    @Query(value = "SELECT * from probleme where description like %:motcle% or titre like %:motcle%",nativeQuery = true)
     public List<Probleme> rechercherDescription(String motcle);
 }

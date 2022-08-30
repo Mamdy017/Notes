@@ -4,7 +4,6 @@ package com.ErrorNotes.Notes.Controllers;
 import com.ErrorNotes.Notes.Modeles.Role;
 import com.ErrorNotes.Notes.Modeles.Utilisateur;
 import com.ErrorNotes.Notes.Services.UtilisateurService;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.repository.query.Param;
@@ -25,11 +24,11 @@ public class UtilisateurController {
 
     @PostMapping("creer")
     public Object create (@RequestBody Utilisateur utilisateur){
-        try {
+        //try {
             return utilisateurService.creer(utilisateur);
-        } catch (DataIntegrityViolationException e) {
+        /*} catch (DataIntegrityViolationException e) {
             return "Cet utilisateur existe déjà !";
-        }
+        }*/
 
     }
 @PutMapping("/update/{id}")

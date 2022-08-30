@@ -47,7 +47,7 @@ public class ProblemeServiceImpl implements ProblemeService {
         Probleme probleme = problemeRepository.findById(id_probleme).orElse(null);
         if (probleme == null) return "Ce problème n'existe pas !";
         else {
-            return probleme.getUtilistaeur();
+            return probleme.getUtilisateur();
         }
     }
 
