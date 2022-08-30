@@ -6,7 +6,11 @@ import com.ErrorNotes.Notes.Modeles.Utilisateur;
 import com.ErrorNotes.Notes.Services.UtilisateurService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.SQLIntegrityConstraintViolationException;
 
 @RestController
 @RequestMapping("/users")
@@ -18,10 +22,15 @@ public class UtilisateurController {
     @Autowired
     UtilisateurService utilisateurService ;
 
-    @PostMapping("creer")
-    public Utilisateur create (@RequestBody Utilisateur utilisateur){
 
-        return utilisateurService.creer(utilisateur);
+    @PostMapping("creer")
+    public Object create (@RequestBody Utilisateur utilisateur){
+        try {
+            return utilisateurService.creer(utilisateur);
+        } catch (DataIntegrityViolationException e) {
+            return "Cet utilisateur existe déjà !";
+        }
+
     }
 @PutMapping("/update/{id}")
     public  String update(@RequestBody Utilisateur utilisateur,@PathVariable Long id){
@@ -45,6 +54,15 @@ public class UtilisateurController {
     @DeleteMapping("/user/{id}")
     public String supprimer(@PathVariable long id){
         return utilisateurService.supprimer(id);
+    }
+    @GetMapping("/connecter")
+    public Object connecter(@Param("contact") String contact,@Param("motdepasse") String mdp) {
+        try {
+            return utilisateurService.connecter(contact,mdp);
+        } catch (NullPointerException e) {
+            return "Cet utilisateur n'existe pas !";
+        }
+
     }
 
 
