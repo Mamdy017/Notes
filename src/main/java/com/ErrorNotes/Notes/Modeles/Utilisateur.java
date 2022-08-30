@@ -13,8 +13,11 @@ public class Utilisateur {
     Long id;
     String nom;
     String prenom;
+    @Column(unique = true)
     String contact;
     String motdepasse;
+    @Transient
+    String confirmpasse;
     @ManyToOne
     private  Role role;
 
