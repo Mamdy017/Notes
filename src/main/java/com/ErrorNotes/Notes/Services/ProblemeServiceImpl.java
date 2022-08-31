@@ -5,6 +5,7 @@ import com.ErrorNotes.Notes.Modeles.Probleme;
 import com.ErrorNotes.Notes.Modeles.Utilisateur;
 import com.ErrorNotes.Notes.Repositories.EtatRepository;
 import com.ErrorNotes.Notes.Repositories.ProblemeRepository;
+import com.ErrorNotes.Notes.Repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,18 @@ public class ProblemeServiceImpl implements ProblemeService {
     @Autowired
     private ProblemeRepository problemeRepository;
     @Autowired
+    private UtilisateurRepository utilisateurRepository;
+    @Autowired
     EtatRepository etatRepository;
     @Override
     public Object poserProbleme(Probleme probleme) {
-        probleme.setEtat(new Etat(1L));
-        return problemeRepository.save(probleme);
+        Utilisateur utilisateurcourant = utilisateurRepository.findById(probleme.getUtilisateur().getId()).orElse(null);
+        if (utilisateurcourant == null) return "Utilisateur non trouvé !";
+        else {
+            probleme.setEtat(new Etat(1L));
+            return problemeRepository.save(probleme);
+        }
+
 
     }
 
@@ -57,5 +65,11 @@ public class ProblemeServiceImpl implements ProblemeService {
         resultat = problemeRepository.rechercherDescription(motcle);
         if (resultat.size() == 0) return "Problème introuvable!";
         else return resultat;
+    }
+
+    @Override
+    public Object afficherProbleme() {
+        if (problemeRepository.findAll().size() == 0) return "Il n'y a aucun problème sur la plateforme pour le moment";
+        else return problemeRepository.findAll();
     }
 }

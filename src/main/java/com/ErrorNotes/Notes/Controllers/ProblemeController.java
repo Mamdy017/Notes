@@ -20,6 +20,10 @@ public class ProblemeController {
     public String changerEtat(@PathVariable("idprobleme") long id_probleme,@PathVariable("idetat") long id_etat) {
         return problemeServiceimpl.changerEtatProbleme(id_probleme,id_etat);
     }
+    @GetMapping("/afficher")
+    public Object afficherProbleme(){
+        return problemeServiceimpl.afficherProbleme();
+    }
     @GetMapping("/rechercher/{motcle}")
     public Object rechercherMotCle(@PathVariable("motcle") String motcle) {
         return problemeServiceimpl.rechercherParMotCle(motcle);
