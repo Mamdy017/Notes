@@ -12,8 +12,8 @@ public class Commentaire {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String description;
-//    @ManyToOne
-//    private Utilisateur utilistaeur;
-//    @ManyToOne
-//    private  Solution solution;
+    @ManyToOne
+    private Utilisateur utilistaeur;
+    @ManyToOne
+    private  Solution solution;
 }
