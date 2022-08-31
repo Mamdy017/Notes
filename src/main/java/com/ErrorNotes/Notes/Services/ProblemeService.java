@@ -11,5 +11,6 @@ public interface ProblemeService {
     public void ajouterSolution(long id_solution);
     public Object afficherUtilistateur(long id_probleme);
     public Object rechercherParMotCle(String motcle);
+    Object afficherProbleme();
 
 }
