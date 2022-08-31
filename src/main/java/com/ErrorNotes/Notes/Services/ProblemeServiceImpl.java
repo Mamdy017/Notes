@@ -72,4 +72,9 @@ public class ProblemeServiceImpl implements ProblemeService {
         if (problemeRepository.findAll().size() == 0) return "Il n'y a aucun problème sur la plateforme pour le moment";
         else return problemeRepository.findAll();
     }
+
+    @Override
+    public Probleme trouverProbleme(Long idprobleme) {
+        return problemeRepository.findById(idprobleme).get();
+    }
 }

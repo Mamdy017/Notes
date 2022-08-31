@@ -2,7 +2,6 @@ package com.ErrorNotes.Notes.Services;
 
 import com.ErrorNotes.Notes.Modeles.Probleme;
 import com.ErrorNotes.Notes.Modeles.Solution;
-import com.ErrorNotes.Notes.Modeles.Utilisateur;
 import com.ErrorNotes.Notes.Repositories.ProblemeRepository;
 import com.ErrorNotes.Notes.Repositories.SolutionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,4 +53,5 @@ public class SolutionServiceImpl implements SolutionService {
         }
        // return solutionRepository.solution(idprobleme);
     }
+
 }

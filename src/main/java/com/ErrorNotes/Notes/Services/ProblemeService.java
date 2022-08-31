@@ -13,4 +13,6 @@ public interface ProblemeService {
     public Object rechercherParMotCle(String motcle);
     Object afficherProbleme();
 
+    Probleme trouverProbleme(Long idP);
+
 }
