@@ -27,11 +27,11 @@ public class UtilisateurController {
     @ApiOperation(value = "Just to test the sample test api of My App Service")
     @PostMapping("creer")
     public Object create (@RequestBody Utilisateur utilisateur){
-        //try {
+        try {
             return utilisateurService.creer(utilisateur);
-        /*} catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException e) {
             return "Cet utilisateur existe déjà !";
-        }*/
+        }
 
     }
 
