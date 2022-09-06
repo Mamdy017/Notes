@@ -22,6 +22,7 @@ public class SolutionController {
 
     @PostMapping("/creer")
     public Solution create(@RequestBody Solution solution){
+
         return solutionService.creer(solution);
     }
     @DeleteMapping("/supprimer/{id_solution}")
